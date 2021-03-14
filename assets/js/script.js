@@ -34,7 +34,7 @@ $(document).ready(function () {
 		searchCity(city);
 	});
 
-	// Add searched cities to .searches div.
+	// add cities to DOM
 	function prependSearch(city) {
 		if (inputCity === null) {
 			return;
@@ -47,9 +47,8 @@ $(document).ready(function () {
 		}
 	}
 
-	// Store searches
+	// store search
 	function storeSearches(searches) {
-		// Add the recent search to the array.
 		for (var i = 0; i < searches.length; i++) {
 			var city = searches.text();
 			if (searchHist.includes(city)) {
@@ -62,14 +61,12 @@ $(document).ready(function () {
 		getSearches();
 	}
 
-	// Get searches from local storage and render them to the page.
+	// pull searches from local storage
 	function getSearches() {
-		// get scores from local storage
 		var storedSearches = JSON.parse(localStorage.getItem("history")) || [];
 		renderSearches(storedSearches);
-	}
-
-	// Render the stored searches to the page.
+    }
+    
 	function renderSearches(storedSearches) {
 		pastSearches.empty();
 
@@ -79,22 +76,21 @@ $(document).ready(function () {
 			searches.text(storedSearches[i]);
 			pastSearches.prepend(searches);
 		}
-		// Create a clear searches button.
+		// clear searches button
 		var clearSearch = $("<button>");
 		clearSearch.attr("class", "clear");
 		clearSearch.text("Clear Search History");
 		pastSearches.append(clearSearch);
 	}
-	// Toggle between searches on click.
+	// view other searches
 	$(document).on("click", ".searches", function () {
 		var city = $(this).text();
 		searchCity(city);
-		// Show the article and H3
 		$("article").show();
 		$("h3").show();
 	});
 
-	//  Use the input to search openweather api for that city.
+	//  openweather api
 	function searchCity(city) {
 		var queryURL =
 			"https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -106,20 +102,19 @@ $(document).ready(function () {
 			method: "GET",
 		})
 			.then(function (response) {
-				// Get the city name
+				// pull city name
 				var cityName = response.name;
 
-				// Get the latitude and longitude.
+				// pull latitude and longitude
 				var latitude = response.coord.lat;
 				var longitude = response.coord.lon;
 
-				// New ajax call
 				oneCall(latitude, longitude, cityName);
 				prependSearch(cityName);
 			})
-			// Catch any misspellings or empty inputs.
+			// alert if entry is not a city
 			.catch(function (error) {
-				alert("Please enter a valid city name!");
+				alert("Please search a valid city");
 				return;
 			});
 
@@ -136,16 +131,17 @@ $(document).ready(function () {
 				url: queryURL,
 				method: "GET",
 			}).then(function (response) {
-				// Clear the local weather article.
+				// clear local weather
 				var articleEl = $("article");
 				articleEl.empty();
 
-				// Add the city name and date to the H2.
+				// add city name and date
 				var today = moment().format("(M/D/YY)");
 				var newH2 = $("<h2>");
 				var icon = response.current.weather[0].icon;
 				var iconEl = $("<img>");
-				iconEl.attr("class", "mainIcon");
+                iconEl.attr("class", "mainIcon");
+                // use open weather icons
 				iconEl.attr(
 					"src",
 					"https://openweathermap.org/img/wn/" + icon + ".png"
@@ -155,7 +151,7 @@ $(document).ready(function () {
 				$("article").append(newH2);
 				$("article").append(iconEl);
 
-				// Add the current temerature to the first <p> tag.
+				// add today's weather
 				var tempK = response.current.temp;
 				var tempF = (tempK - 273.15) * 1.8 + 32;
 				var pTemp = $("<p>");
@@ -164,28 +160,28 @@ $(document).ready(function () {
 				pTemp.text("Temperature: " + tempF.toFixed(1) + " " + fahranheit);
 				$("article").append(pTemp);
 
-				// Add the current humidity to the second <p> tag.
+				// current humidity 
 				var humidity = response.current.humidity;
 				var pHum = $("<p>");
 				pHum.attr("class", "today");
 				pHum.text("Humidity: " + humidity + "%");
 				$("article").append(pHum);
 
-				// Add the current wind speed to the third <p> tag.
+				// wind speed
 				var windSpeed = response.current.wind_speed;
 				var pWind = $("<p>");
 				pWind.attr("class", "today");
 				pWind.text("Wind Speed: " + windSpeed.toFixed(1) + " MPH");
 				$("article").append(pWind);
 
-				// Add the current UV Index to the fourth <p> tag.
+				// UV index with color-coding for low, moderate and high (css)
 				var uvIndex = response.current.uvi;
 				var pIndex = $("<p>");
 				var pUV = $("<p>");
 				pUV.attr("class", "today uv");
 				pIndex.attr("class", "today  uv uvBox");
 				pIndex.attr("id", "uvIndex");
-				// Color code the uvIdex to low, moderate, or high.
+		
 				if (uvIndex <= 2) {
 					pIndex.attr("id", "low");
 				} else if (uvIndex > 2 && uvIndex <= 5) {
@@ -198,15 +194,15 @@ $(document).ready(function () {
 				$("article").append(pUV);
 				$("article").append(pIndex);
 
-				// Empty the forecast div.
+				// empty forcast
 				fiveDayForecast.empty();
 
-				// Create and append h3 element
+				// display for 5-day forecast
 				h3El = $("<h3>");
 				h3El.text("5-Day Forecast:");
 				fiveDayForecast.append(h3El);
 
-				// Create an array of the 5 day forecast.
+				// array for next 5 days
 				var daily = [];
 				daily.push(response.daily[1]);
 				daily.push(response.daily[2]);
@@ -214,19 +210,18 @@ $(document).ready(function () {
 				daily.push(response.daily[4]);
 				daily.push(response.daily[5]);
 
-				// Cylce through the array and gather information.
+				// gather forcast info from api
 				for (var i = 0; i < daily.length; i++) {
-					// Create a div to house the information.
 					var dailyDiv = $("<div>");
 					dailyDiv.attr("class", "fiveDay");
-					// Get the date.
+					// pull the date for next 5 days
 					var dateEl = $("<p>");
 					dateEl.attr("class", "dates");
 					var newDate = moment()
 						.add(i + 1, "days")
 						.format("M/D/YYYY");
 					dateEl.text(newDate);
-					// Get the icon.
+					// pull icons from openweather api
 					var icon = daily[i].weather[0].icon;
 					var iconEl = $("<img>");
 					iconEl.attr("class", "dailyIcon");
@@ -234,19 +229,19 @@ $(document).ready(function () {
 						"src",
 						"https://openweathermap.org/img/wn/" + icon + ".png"
 					);
-					// Get the daily high temp.
+					// high temp
 					var tempEl = $("<p>");
 					tempEl.attr("class", "days");
 					var tempK = daily[i].temp.max;
 					var tempF = (tempK - 273.15) * 1.8 + 32;
 					var fahranheit = "\xB0F";
 					tempEl.text("Temp: " + tempF.toFixed(2) + " " + fahranheit);
-					// Get the daily humidity.
+					// humidity
 					var humEl = $("<p>");
 					humEl.attr("class", "days");
 					var hum = daily[i].humidity;
 					humEl.text("Humidity: " + hum + "%");
-					// Append everything to the page.
+					// add to page
 					dailyDiv.append(dateEl);
 					dailyDiv.append(iconEl);
 					dailyDiv.append(tempEl);
@@ -256,7 +251,7 @@ $(document).ready(function () {
 			});
 		}
 	}
-	// Click event for clear searches button that empties local storage.
+	// clear search from local storage
 	$(document).on("click", ".clear", function () {
 		localStorage.clear();
 		location.reload();
