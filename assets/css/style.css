@@ -1,0 +1,388 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color:rgb(118, 173, 199);
+	background-size: cover;
+}
+.container-fluid {
+	padding: 20px 0 0 50px;
+}
+
+.header {
+	height: 120px;
+	text-align: center;
+	background-color: rgb(105, 105, 228);
+}
+
+h1 {
+	padding-top: 30px;
+	color: snow;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+/******* Article Styling and Everything inside the Article *******/
+article {
+	padding-top: 10px;
+}
+
+h2 {
+	display: inline-block;
+	color: snow;
+	font-size: 34px;
+	text-align: center;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-weight: bolder;
+}
+
+.mainIcon {
+	display: inline-block;
+	width: 110px;
+	margin: 0 0 12px 0;
+}
+
+/* Paragraphs appended to the page */
+.today {
+	color: rgb(241, 239, 239);
+	font-size: 24px;
+	padding: 0 0 10px 15px;
+}
+/* Special fomatting for the uvIdex */
+.uv {
+	display: inline-block;
+}
+
+.uvBox {
+	border: solid;
+	border-radius: 10px;
+	width: 60px;
+	height: 40px;
+	margin-left: 8px;
+	padding: 0;
+	text-align: center;
+}
+
+#high {
+	border-color: rgb(187, 1, 1);
+	background-color: rgb(187, 1, 1);
+}
+#mod {
+	border-color: goldenrod;
+	background-color: goldenrod;
+}
+#low {
+	border-color: green;
+	background-color: green;
+}
+
+/******* Styling of everything below the Article *******/
+
+h3 {
+	margin: 60px 0 40px 0;
+	padding: 5px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-size: 26px;
+	text-align: left;
+	color: snow;
+}
+/* Forcast Div appended to the page */
+#fiveDayForecast {
+	text-align: left;
+	height: 100%;
+}
+
+/* All the blocks appended to the #fiveDayForecast Div */
+.fiveDay {
+	display: inline-block;
+	text-align: center;
+	height: 200px;
+	width: 180px;
+	background-color: rgb(200, 231, 245);
+	margin: 20px 30px 60px 0;
+}
+
+.dates {
+	color: grey;
+	font-size: 24px;
+	margin: 8px 0 0 0;
+	padding: 0 0 6px 0;
+}
+
+.days {
+	color: grey;
+	font-size: 20px;
+	padding: 0 0 6px 0;
+	margin: 0;
+}
+
+.dailyIcon {
+	width: 60px;
+	margin-bottom: 4px;
+}
+
+/******* Styling of everything in the Aside Section *******/
+aside {
+	background: transparent;
+	width: 340px;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+h4 {
+	margin: 50px 0 20px 5px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-size: 22px;
+	text-align: left;
+	color: snow;
+}
+
+input {
+	float: left;
+	height: 40px;
+	width: 180px;
+	margin: 0 0 30px 0;
+	font-size: 20px;
+	padding-left: 10px;
+}
+
+button {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin-left: 5px;
+}
+
+#historySection {
+	text-align: center;
+}
+/* Search History divs prepended to the #historySection Div. */
+.searches {
+	width: 180px;
+	height: 40px;
+	text-align: left;
+	border-style: solid;
+	border-color: navy;
+	border-width: 1px;
+	font-size: 20px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	color: grey;
+	background-color: rgb(248, 245, 245);
+	margin: 0 0 2px 0;
+	padding: 4px 0 0 10px;
+}
+.searches:hover {
+	cursor: pointer;
+}
+/* Clear Button */
+.clear {
+	width: 180px;
+	height: 40px;
+	background-color: rgb(187, 1, 1);
+	border-width: 1px;
+	font-size: 16px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	color: snow;
+	margin: 10px 0 0 0;
+	text-align: center;
+}
+
+/* * Special styling for screens under 1600px * */
+@media only screen and (max-width: 1600px) {
+	/* Top to bottom */
+	.container-fluid {
+		padding: 10px 0 0 10px;
+	}
+	.header {
+		height: 90px;
+	}
+	h1 {
+		padding-top: 20px;
+		font-size: 44px;
+	}
+	/* Inside Article */
+	article {
+		padding-left: 10px;
+	}
+	h2 {
+		margin-top: 40px;
+		font-size: 30px;
+	}
+	.mainIcon {
+		width: 90px;
+	}
+	/* Below Article */
+	h3 {
+		margin: 20px 0;
+	}
+	/* Blocks appened to #fiveDayForecast div */
+	.fiveDay {
+		height: 180px;
+		width: 160px;
+		margin-right: 15px;
+	}
+	.dates {
+		font-size: 22px;
+	}
+	.days {
+		font-size: 18px;
+	}
+	/* Inside Aside */
+	h4 {
+		font-size: 20px;
+	}
+}
+
+/******* Special styling for screens under 1200px *******/
+@media only screen and (max-width: 1200px) {
+	/* Top to bottom */
+	/* Inside Article */
+	h2 {
+		font-size: 28px;
+	}
+	.today {
+		font-size: 22px;
+	}
+	/* Blocks appended to #fiveDayForecast */
+	.fiveDay {
+		height: 155px;
+		width: 135px;
+		margin-right: 10px;
+	}
+	.dates {
+		font-size: 20px;
+		padding-bottom: 4px;
+	}
+	.days {
+		font-size: 18px;
+		padding-bottom: 2px;
+	}
+	.dailyIcon {
+		width: 50px;
+		margin-bottom: 2px;
+	}
+}
+
+/******* Special styling for screens under 800px *******/
+@media only screen and (max-width: 800px) {
+	/* Top to bottom */
+	.container-fluid {
+		padding-left: 40px;
+	}
+	/* Inside Article */
+	article {
+		text-align: center;
+	}
+	h2 {
+		padding-left: 70px;
+	}
+	/* Below Article */
+	h3 {
+		margin: 30px 0;
+		text-align: center;
+	}
+	/* Forecast Div appended to the page. */
+	#fiveDayForecast {
+		text-align: center;
+	}
+	/* Inside Aside */
+	h4 {
+		font-size: 20px;
+	}
+	input,
+	.searches,
+	.clear {
+		width: 160px;
+	}
+	input,
+	.searches {
+		font-size: 18px;
+	}
+	.clear {
+		font-size: 14px;
+	}
+}
+/******* Special styling for screens under 420px *******/
+@media only screen and (max-width: 420px) {
+	/* Top to bottom */
+	body {
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 200vh;
+	}
+	.container-fluid {
+		padding-left: 0px;
+	}
+	h1 {
+		font-size: 38px;
+	}
+	/* Inside Article */
+	h2 {
+		margin-left: 20px;
+		padding-left: 0px;
+		font-size: 28px;
+	}
+	.today {
+		padding-left: 0px;
+	}
+	/* Below Article */
+	h3 {
+		margin: 40px 0;
+	}
+	/* Forecast Div appended to the page. */
+	#fiveDayForecast {
+		margin-left: 20px;
+	}
+	/* Inside Aside */
+	h4,
+	.searches,
+	.clear {
+		margin-left: 120px;
+		margin-right: 0px;
+	}
+	input {
+		margin-left: 106px;
+	}
+}
+/******* Special styling for screens under 375px *******/
+@media only screen and (max-width: 375px) {
+	/* Top to bottom */
+	.container-fluid {
+		padding-left: 20px;
+	}
+	h1 {
+		font-size: 36px;
+		padding: 30px 0 0 20px;
+	}
+	/* Inside Article */
+	h2 {
+		font-size: 22px;
+		margin-left: 20px;
+	}
+	/* Below Article */
+	h3 {
+		padding-left: 0px;
+	}
+	/* Forecast Div appended to the page. */
+	#fiveDayForecast {
+		margin-left: 20px;
+	}
+	.fiveDay {
+		margin-right: 20px;
+	}
+	/* Inside Aside */
+	h4,
+	.searches,
+	.clear {
+		margin-left: 94px;
+		margin-right: 0px;
+	}
+	input {
+		margin-left: 76px;
+	}
+}
