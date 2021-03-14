@@ -1,13 +1,13 @@
-# Work Day Scheduler Starter Code
+# Work Day Scheduler
 
 ## Description
-Uses the OpenWeather API to retrieve weather data and uses localStorage to store persistent data.
+This weather dashboard allows the user to search for a city and the webpage will display the current weather and 5-day forcast of that location. Each search is saved in the search history. It uses the OpenWeather API to retrieve weather data and uses localStorage to store search data. All images and icons are pulled directly form the OpenWeather API. 
 
 ## Launch Weather Dashboard 
 Try out the dashboard here:  https://telacaul.github.io/weather_dashboard/
 
 ## Screenshot
-![calendar](./assets/images/workdayscheduler.jpg)
+![Dashboard](./assets/images/weather_dashboard.jpg)
 
 ## Challenge Requirements
 ### User Story
